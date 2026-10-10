@@ -1,6 +1,7 @@
 ROS 2 话题接口
 以下为当前工程默认配置。话题名均可通过参数或 YAML 修改。
 数据流
+
 Orbbec 相机
   ├─ RGB 图像 ─> yolo_node ─> 2D 检测框
   └─ 点云 ──────────────────> pose_estimator ─> 目标 6DoF 位姿
@@ -10,6 +11,7 @@ Orbbec 相机
                                                    │
                                                    v
                                                串口驱动
+                                               
 yolo_node
 方向	话题	消息类型	含义
 订阅	/camera/color/image_raw	sensor_msgs/Image	相机 RGB 原始图像
