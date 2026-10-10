@@ -1,0 +1,19 @@
+/**:
+  ros__parameters:
+    state_topic: "/arm2nav"
+    nav_command_topic: "/arm2nav/command"
+    arm_state_topic: "/arm2nav/from_arm"
+    detection_topic: "/yolo/detections"
+    pointcloud_topic: "/camera/depth/color/points"
+    camera_info_topic: "/camera/color/camera_info"
+    image_topic: "/camera/color/image_raw"
+    target_frame: "camera_link"
+    target_class: "blue_block"
+    confidence_threshold: 0.6
+    min_consecutive_detections: 3
+    roi_side_m: 0.05
+    trigger_pulse_sec: 0.2
+    publish_hz: 10.0
+    max_cloud_age_sec: 0.5
+    # tzb_catch publishes the first arm-side state after reaching sentry_joint_positions.
+    require_arm_ready: true

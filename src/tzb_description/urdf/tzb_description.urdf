@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="tzb_description">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-1.52009045962895E-16 -0.00601450511371332 -0.0679638773547368"
+        rpy="0 0 0" />
+      <mass
+        value="26.2254731863278" />
+      <inertia
+        ixx="0.592003946414147"
+        ixy="-9.83091199255635E-17"
+        ixz="1.03126934119654E-17"
+        iyy="0.197213284600528"
+        iyz="0.0232198105229031"
+        izz="0.614018234114391" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="J1_link">
+    <inertial>
+      <origin
+        xyz="-1.16696924073283E-17 -5.89936086092813E-15 0.0651809526971255"
+        rpy="0 0 0" />
+      <mass
+        value="0.870553075390441" />
+      <inertia
+        ixx="0.00193707700286863"
+        ixy="1.55539055223716E-20"
+        ixz="6.90778776015883E-20"
+        iyy="0.00159687695132158"
+        iyz="-8.29488612320407E-20"
+        izz="0.0010133703294203" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/J1_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/J1_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="J1_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.2 0.014"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="J1_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="3.6652"
+      effort="20"
+      velocity="1.6666" />
+  </joint>
+  <link
+    name="J2_link">
+    <inertial>
+      <origin
+        xyz="-5.47897025517967E-17 -8.23173994246584E-14 0.157913891578045"
+        rpy="0 0 0" />
+      <mass
+        value="1.91674379887805" />
+      <inertia
+        ixx="0.0116561421527398"
+        ixy="-1.3661350225509E-19"
+        ixz="1.10846426460773E-18"
+        iyy="0.0115264664033735"
+        iyz="1.41522283470341E-18"
+        izz="0.00303675819709709" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/J2_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/J2_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="J2_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0899999999999928"
+      rpy="0 0 0" />
+    <parent
+      link="J1_link" />
+    <child
+      link="J2_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-1.1345"
+      upper="1.1345"
+      effort="20"
+      velocity="1.666" />
+  </joint>
+  <link
+    name="J3_link">
+    <inertial>
+      <origin
+        xyz="-6.65485905713986E-17 2.33753988387875E-16 0.111672940162958"
+        rpy="0 0 0" />
+      <mass
+        value="1.56550421436345" />
+      <inertia
+        ixx="0.012521866006591"
+        ixy="1.69260109042968E-19"
+        ixz="1.47587910960831E-18"
+        iyy="0.0122442403176993"
+        iyz="-2.50208950190202E-17"
+        izz="0.00141550373070813" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/J3_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/J3_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="J3_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.320000000000007"
+      rpy="0 0 0" />
+    <parent
+      link="J2_link" />
+    <child
+      link="J3_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-2.618"
+      upper="2.618"
+      effort="12"
+      velocity="0.6" />
+  </joint>
+  <link
+    name="J4_link">
+    <inertial>
+      <origin
+        xyz="-0.00089896613209195 -5.55690476272686E-14 0.0412964133734367"
+        rpy="0 0 0" />
+      <mass
+        value="0.251968903038926" />
+      <inertia
+        ixx="0.000218980857141259"
+        ixy="1.10951631087129E-19"
+        ixz="-2.43171697257959E-06"
+        iyy="0.000225136648420625"
+        iyz="4.24549455878371E-18"
+        izz="0.00013459438799732" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/J4_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/J4_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="J4_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.264900000000004"
+      rpy="0 0 0" />
+    <parent
+      link="J3_link" />
+    <child
+      link="J4_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.8798"
+      upper="2.8798"
+      effort="3.5"
+      velocity="2.0" />
+  </joint>
+  <link
+    name="J5_link">
+    <inertial>
+      <origin
+        xyz="3.0821947004463E-15 9.14242639926677E-15 0.0541050588081871"
+        rpy="0 0 0" />
+      <mass
+        value="0.152463177255861" />
+      <inertia
+        ixx="0.000118991388244827"
+        ixy="1.39339477252047E-19"
+        ixz="-1.53438224551648E-18"
+        iyy="0.000141377899683522"
+        iyz="-9.19350053381676E-18"
+        izz="8.84352298415392E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/J5_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/J5_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="J5_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0599999999999952"
+      rpy="0 0 0" />
+    <parent
+      link="J4_link" />
+    <child
+      link="J5_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.578"
+      upper="1.5708"
+      effort="3.5"
+      velocity="2.0" />
+  </joint>
+  <link
+    name="J6_link">
+    <inertial>
+      <origin
+        xyz="-5.55657718875896E-16 -1.81194035470122E-14 0.0251515712920739"
+        rpy="0 0 0" />
+      <mass
+        value="0.115603262197442" />
+      <inertia
+        ixx="3.46828046915316E-05"
+        ixy="4.89428497193629E-22"
+        ixz="6.67317441342625E-22"
+        iyy="3.71780580226247E-05"
+        iyz="2.88964235716535E-20"
+        izz="3.57386232754556E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/J6_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/J6_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="J6_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0930000000000012"
+      rpy="0 0 0" />
+    <parent
+      link="J5_link" />
+    <child
+      link="J6_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.8798"
+      upper="2.8798"
+      effort="3.5"
+      velocity="2.0" />
+  </joint>
+  <link
+    name="Claw_left_link">
+    <inertial>
+      <origin
+        xyz="0.0047113685399107 -2.20544936480049E-13 0.0478288480078148"
+        rpy="0 0 0" />
+      <mass
+        value="0.0211667167204152" />
+      <inertia
+        ixx="5.66710777587648E-06"
+        ixy="3.08145023183647E-23"
+        ixz="-1.78501276423374E-06"
+        iyy="7.17535580368308E-06"
+        iyz="2.9793254745141E-21"
+        izz="1.83237288105822E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/Claw_left_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/Claw_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Claw_left_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0300000000000046 0 0.0562499999999994"
+      rpy="0 0 0" />
+    <parent
+      link="J6_link" />
+    <child
+      link="Claw_left_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.5236"
+      upper="0"
+      effort="0.8"
+      velocity="2.5" />
+  </joint>
+  <link
+    name="claw_right_link">
+    <inertial>
+      <origin
+        xyz="-0.00471136853981437 1.17128529097954E-14 0.0478288480078184"
+        rpy="0 0 0" />
+      <mass
+        value="0.0211667167204152" />
+      <inertia
+        ixx="5.66710777587646E-06"
+        ixy="2.65261377690728E-19"
+        ixz="1.78501276423369E-06"
+        iyy="7.17535580368307E-06"
+        iyz="-1.12518961738044E-18"
+        izz="1.8323728810582E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/claw_right_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/claw_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="claw_right_joint"
+    type="revolute">
+    <origin
+      xyz="0.0299999999999934 0 0.0562499999999951"
+      rpy="0 0 0" />
+    <parent
+      link="J6_link" />
+    <child
+      link="claw_right_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0.5236"
+      effort="0.8"
+      velocity="2.5" />
+    <mimic
+      joint="Claw_left_joint"
+      multiplier="-1"
+      offset="0" />
+  </joint>
+  <link
+    name="camera_link">
+    <inertial>
+      <origin
+        xyz="-6.23548177461065E-17 0.0450595685752024 -0.0283827941733639"
+        rpy="0 0 0" />
+      <mass
+        value="0.355270555447913" />
+      <inertia
+        ixx="0.000758988605099568"
+        ixy="7.67011198700595E-20"
+        ixz="-1.11973445777091E-19"
+        iyy="0.000337642737954099"
+        iyz="0.00011715706260026"
+        izz="0.000960675206446699" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/camera_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tzb_description/meshes/camera_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera_joint"
+    type="fixed">
+    <origin
+      xyz="-0.03 -0.155288674811394 0.274492525428163"
+      rpy="-0.5235987 0 0" />
+    <parent
+      link="J3_link" />
+    <child
+      link="camera_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="tcp_link" />
+  <joint
+    name="tcp_joint"
+    type="fixed">
+    <origin
+      xyz="-0.015 0.001 0.11"
+      rpy="0 0 0" />
+    <parent
+      link="J6_link" />
+    <child
+      link="tcp_link" />
+  </joint>
+</robot>

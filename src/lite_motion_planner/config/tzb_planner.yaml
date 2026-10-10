@@ -1,0 +1,189 @@
+/**:
+  ros__parameters:
+    urdf_path: "/home/tzb/tzb_ws/src/tzb_description/urdf/tzb_description.urdf"
+    srdf_path: "/home/tzb/tzb_ws/src/lite_motion_planner/config/tzb_description.srdf"
+    mesh_package_dirs:
+      - "/home/tzb/tzb_ws/src/tzb_description"
+
+    planning_frame: "base_link"
+    default_group: "arm"
+    default_ee_frame: "tcp_link"
+
+    planning_timeout: 2.0
+    ompl_max_plan_attempts: 4
+    ik_max_iterations: 600
+    ik_pos_tolerance: 0.008
+    ik_rot_tolerance: 0.08
+    ik_damping: 1.0e-5
+    ik_alpha: 0.5
+    ik_max_step_norm: 0.35
+    ik_max_seed_count: 48
+    collision_check_resolution: 0.02
+    trajectory_collision_check_step: 0.05
+    control_period: 0.01
+
+    enable_visualization: true
+    enable_moveit_visualization: true
+    launch_visualization_rviz: true
+    launch_robot_state_publisher: true
+    publish_joint_states_for_visualization: true
+    enable_joint_state_playback: true
+    joint_state_playback_loop: false
+    joint_state_playback_speed_scale: 0.7
+    publish_moveit_display_trajectory: true
+    publish_moveit_planning_scene: true
+    publish_moveit_monitored_planning_scene: true
+    publish_collision_markers: true
+    publish_robot_collision_markers: false
+    publish_collision_labels: true
+    # E3 is published by tzb_catch; keep the planning-scene E3 publisher off.
+    publish_e3_marker: false
+    visualization_joint_states_topic: "/joint_states"
+    moveit_display_trajectory_topic: "/display_planned_path"
+    moveit_planning_scene_topic: "/planning_scene"
+    moveit_monitored_planning_scene_topic: "/monitored_planning_scene"
+
+    # tzb_description-specific end-effector collision names.
+    relaxed_scene_collision_object_id: "E3"
+    relaxed_scene_collision_object_ids: [""]
+    relaxed_scene_collision_links: ["tcp_link", "J6_link", "Claw_left_link", "claw_right_link"]
+    relaxed_scene_collision_allowed_penetration: 0.005
+    gripper_scene_collision_object_ids: [""]
+    gripper_scene_collision_links: ["Claw_left_link", "claw_right_link"]
+    gripper_scene_collision_allowed_penetration: 0.0
+    gripper_self_collision_links: ["Claw_left_link", "claw_right_link"]
+    gripper_self_collision_allowed_penetration: 0.0
+    self_collision_allowed_penetration: 0.0
+    # Keep the robot base in collision checking for obstacle avoidance.
+    globally_ignored_robot_collision_links: [""]
+
+    tzb.arm_group: "arm"
+    tzb.tcp_frame: "tcp_link"
+    tzb.e3_mesh_resource: "package://lite_motion_planner/config/E3.STL"
+    tzb.mesh_scale: [0.001, 0.001, 0.001]
+    tzb.e3_marker_topic: "/tzb_catch/e3_marker"
+    tzb.publish_e3_marker: true
+
+    # Target source. false uses pose_estimator; true uses the YAML TCP target below.
+    tzb.use_yaml_e3_target: false
+
+    # When use_yaml_e3_target=true, XYZ and RPY are interpreted directly in this frame.
+    tzb.e3_target_frame: "base_link"
+    tzb.e3_target_xyz: [0.3, 0.80, 0.20]
+    tzb.e3_target_rpy: [0.0, 0.0, 0.0]
+    tzb.pose_estimator_target_topic: "/pose_estimator/object_pose"
+    tzb.pose_estimator_reference_frame: "camera_link"
+    tzb.apply_reference_transform_to_frozen_frame: true
+    tzb.pose_estimator_wait_timeout_sec: 15.0
+    tzb.pose_estimator_continuous_required_sec: 1.0
+    tzb.pose_estimator_continuous_max_gap_sec: 0.25
+    tzb.pose_estimator_reference_transform_matrix: [
+      1.0, 0.0, 0.0, 0.0,
+      0.0, 1.0, 0.0, 0.0,
+      0.0, 0.0, 1.0, 0.0,
+      0.0, 0.0, 0.0, 1.0
+    ]
+    tzb.pose_estimator_axis_conversion_matrix: [
+      1.0, 0.0, 0.0,
+      0.0, 1.0, 0.0,
+      0.0, 0.0, 1.0
+    ]
+
+    # Each enabled axis uses its forced value; disabled axes use visual/YAML RPY.
+    tzb.force_target_roll: true
+    tzb.force_target_pitch: true
+    tzb.force_target_yaw: true
+    tzb.target_rpy_unit: "rad"
+    tzb.forced_target_roll: -3.14
+    tzb.forced_target_pitch: 0.0
+    tzb.forced_target_yaw: 0.0
+    # Mutually exclusive fallback modes for the final TCP target.
+    # adaptive_rpy keeps XYZ fixed and searches around the transformed visual RPY.
+    tzb.adaptive_rpy: false
+    # position_only_target keeps XYZ constrained and completely relaxes orientation.
+    tzb.position_only_target: false
+    tzb.adaptive_rpy_step_deg: 360.0
+    tzb.adaptive_rpy_max_deg: 360.0
+    tzb.adaptive_rpy_max_candidates: 64
+
+    # Named joint presets use the arm group order shown below.
+    # [J1_joint, J2_joint, J3_joint, J4_joint, J5_joint, J6_joint]
+    tzb.joint_positions_unit: "rad"
+    # These presets belong to the active tzb_description model. Array index 0 maps
+    # to J1_joint (there is no J0 joint), followed by J2_joint through J6_joint.
+    tzb.ini_joint_positions: [0.0, 1.0, -2.61, 0.0, 0.0, 0.0]
+    tzb.place_joint_positions: [3.14, -0.25, -0.91, 0.0, 1.57, 0.0]
+    tzb.observe_joint_positions: [0.0, 0.0, -2.00, 0.0, 1.57, 0.0]
+    tzb.sentry_joint_positions: [0.0, 1.13, -2.18, 0.0, 1.57, 0.0]
+
+    # Serial feedback is used both for the initial state and physical arrival checks.
+    tzb.arm_state_topic: "/serial/arm_joint_state"
+    tzb.arm_feedback_enabled: true
+    tzb.arm_state_wait_timeout_sec: 0.5
+    tzb.arm_state_max_age_sec: 0.5
+    # Starts after the last velocity-limited command sample has been sent.
+    tzb.arm_motion_feedback_timeout_sec: 10.0
+    # Physical arrival tolerance; 0.05 rad is about 2.9 degrees.
+    tzb.arm_motion_goal_tolerance_rad: 0.05
+    tzb.arm_motion_stable_duration_sec: 0.25
+    # Every arm stage must be physically reached and stable before continuing.
+    tzb.require_arm_feedback_for_completion: true
+
+
+    # Only the actuated claw joint is commanded; claw_right_joint follows via mimic.
+    tzb.gripper_joint_names: ["Claw_left_joint"]
+    tzb.gripper_home_positions: [0.0]
+    tzb.gripper_open_positions: [-0.5236]
+    tzb.gripper_close_positions: [0.0]
+    # Hardware gripper command: Int8 1=closed, -1=open; serial driver repeats the current state.
+    tzb.gripper_command_topic: "/tzb_catch/gripper_command"
+    # The target remains collision-active; only the gripper assembly below is exempted.
+    tzb.e3_collision_object_enabled: true
+    tzb.grasp_collision_links: ["tcp_link", "J6_link", "Claw_left_link", "claw_right_link"]
+    tzb.grasp_collision_allowed_penetration: -1.0
+
+    tzb.joint_planning_timeout: 2.0
+    tzb.path_check_step: 0.05
+    tzb.service_wait_sec: 1.0
+    tzb.response_wait_sec: 15.0
+    tzb.post_action_wait_sec: 0.05
+    tzb.joint_goal_tolerance_rad: 0.01
+
+    # Upper-computer sampling limiter. The serial driver applies the same hard limit.
+    tzb.arm_command_enabled: true
+    tzb.arm_command_topic: "/tzb_catch/arm_joint_command"
+    tzb.arm_command_publish_hz: 100.0
+    tzb.arm_command_speed_scale: 1.0
+    tzb.arm_command_goal_tolerance_rad: 0.005
+    tzb.max_arm_command_velocity_rad_s: [1.2, 1.2, 1.2, 1.8, 1.8, 2.2]
+
+    tzb.sequence_loop: false
+    tzb.loop_pause_sec: 0.5
+    tzb.replay_after_complete: false
+    tzb.replay_loop: false
+    tzb.freeze_camera_pointcloud_enabled: false
+    tzb.reference_marker_republish_hz: 5.0
+    # Persistent TCP polylines on /tzb_catch/reference_frames for RViz diagnosis.
+    tzb.publish_tcp_trajectory: true
+    tzb.tcp_trajectory_line_width_m: 0.006
+    tzb.tcp_trajectory_min_distance_m: 0.002
+    tzb.tcp_trajectory_max_points: 10000
+
+    # Wait for the first navigation goal: 0=keep waiting, 1=run one arm task.
+    # A new task requires the status to return to 0 before the next 1.
+    tzb.autostart: false
+    # true: wait for /navigation_goal_status 0 -> 1 before starting;
+    # false: do not subscribe to the navigation status and start the arm task immediately.
+    tzb.listen_navigation_goal_status: true
+    tzb.start_topic: "/tzb_catch/start"
+    tzb.navigation_goal_status_topic: "/navigation_goal_status"
+    tzb.result_topic: "/tzb_catch/result"
+
+    # Sentry mode replaces the legacy navigation-goal-status gate with arm2nav.
+    # arm2nav publishes perception/navigation state at 10 Hz. Navigation sends
+    # arm_trigger on /arm2nav/command; tzb_catch acknowledges on /arm2nav/from_arm.
+    tzb.sentry_mode: false
+    tzb.sentry_execution_limit: 1
+    tzb.arm2nav_state_topic: "/arm2nav"
+    tzb.arm2nav_arm_state_topic: "/arm2nav/from_arm"
+    tzb.sentry_trigger_pulse_sec: 0.2

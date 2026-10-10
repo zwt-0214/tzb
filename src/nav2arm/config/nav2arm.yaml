@@ -1,0 +1,7 @@
+/**:
+  ros__parameters:
+    state_topic: "tzb_state_test"
+    catch_start_topic: "/tzb_catch/start"
+    catch_result_topic: "/tzb_catch/result"
+    wait_for_nav_go_finish: true
+    trigger_hold_sec: 0.2

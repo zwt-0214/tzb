@@ -1,0 +1,22 @@
+
+# 大模型文件，不走 git
+*.bin
+*.onnx
+*.xml
+*.pt
+*.weights
+best_openvino_model/
+
+# ROS 编译产物
+build/
+devel/
+install/
+log/
+
+# 大文件
+*.bin
+*.onnx
+*.pt
+*.weights
+*.pb
+best_openvino_model/

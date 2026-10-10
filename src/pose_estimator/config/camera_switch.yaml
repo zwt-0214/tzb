@@ -1,0 +1,14 @@
+camera:
+  # One-click camera selection:
+  #   orbbec_gemini336l      -> Orbbec Gemini 336L (default)
+  #   d435i                  -> Intel RealSense D435i
+  driver: "orbbec_gemini336l"
+
+  # Both drivers are normalized to these downstream topics:
+  # RGB image:          /camera/color/image_raw
+  # depth image:        /camera/depth/image_rect_raw
+  # aligned pointcloud: /camera/depth/color/points
+  camera_name: "camera"
+  width: 640
+  height: 480
+  fps: 30

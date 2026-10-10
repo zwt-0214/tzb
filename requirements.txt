@@ -1,0 +1,97 @@
+# Python runtime dependencies for the ROS 2 Humble workspace.
+# Tested target: Ubuntu 22.04, Python 3.10, ROS 2 Humble.
+# ROS Python modules (rclpy, cv_bridge, tf2_ros, launch, etc.) are installed
+# by apt/ROS below and are intentionally not duplicated as pip requirements.
+
+numpy>=1.21,<2
+scipy>=1.10,<2
+PyYAML>=5.4,<7
+open3d>=0.18,<0.20
+opencv-python-headless>=4.5,<5
+# Ultralytics imports PyTorch even when inference uses OpenVINO. Use CPU wheels
+# so pip does not resolve the multi-GB CUDA distribution on this workstation.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.1.2+cpu
+torchvision==0.16.2+cpu
+ultralytics>=8.2,<9
+openvino>=2024.0,<2026
+
+# ---------------------------------------------------------------------------
+# Environment setup (run from the workspace root: /home/tzb/tzb_ws)
+# ---------------------------------------------------------------------------
+# 1) ROS 2 Humble and compiler tools (Ubuntu 22.04):
+#    sudo apt update
+#    sudo apt install -y build-essential cmake git python3-pip python3-venv \
+#      python3-colcon-common-extensions python3-rosdep python3-vcstool \
+#      libeigen3-dev libompl-dev
+#
+# 2) ROS packages used by this workspace, including the default Orbbec camera:
+#    sudo apt install -y \
+#      ros-humble-ament-cmake \
+#      ros-humble-ament-cmake-python \
+#      ros-humble-rclcpp ros-humble-rclpy \
+#      ros-humble-geometry-msgs ros-humble-sensor-msgs \
+#      ros-humble-std-msgs ros-humble-std-srvs \
+#      ros-humble-trajectory-msgs ros-humble-visualization-msgs \
+#      ros-humble-builtin-interfaces ros-humble-shape-msgs \
+#      ros-humble-tf2-ros ros-humble-tf2-geometry-msgs \
+#      ros-humble-robot-state-publisher ros-humble-rviz2 \
+#      ros-humble-joint-state-publisher-gui ros-humble-xacro \
+#      ros-humble-cv-bridge ros-humble-image-transport \
+#      ros-humble-rosidl-default-generators ros-humble-rosidl-default-runtime \
+#      ros-humble-ament-index-cpp ros-humble-tinyxml2-vendor \
+#      ros-humble-backward-ros \
+#      ros-humble-camera-info-manager ros-humble-image-publisher \
+#      ros-humble-tf2-sensor-msgs ros-humble-tf2-msgs \
+#      ros-humble-statistics-msgs ros-humble-diagnostic-updater \
+#      ros-humble-diagnostic-msgs ros-humble-camera-calibration-parsers \
+#      ros-humble-moveit ros-humble-moveit-msgs \
+#      ros-humble-geometric-shapes ros-humble-pinocchio \
+#      ros-humble-coal ros-humble-ruckig ros-humble-ompl \
+#      ros-humble-serial-driver ros-humble-io-context \
+#      ros-humble-orbbec-camera
+#    The workspace includes a source checkout of OrbbecSDK_ROS2, so the
+#    Orbbec package dependencies above are needed even when an apt Orbbec
+#    package is also installed. It also needs these Ubuntu libraries:
+#    sudo apt install -y libgflags-dev nlohmann-json3-dev libgoogle-glog-dev \
+#      libssl-dev libyaml-cpp-dev libopencv-dev
+#
+#    Optional RealSense support (the launch switch still accepts d435i):
+#    sudo apt install -y ros-humble-realsense2-camera
+#
+# 3) Source ROS before using colcon or ros2:
+#    source /opt/ros/humble/setup.bash
+#
+# 4) Install Python dependencies. A virtual environment that can see ROS's
+#    system packages is supported; the command below installs for this user:
+#    python3 -m pip install --user -r requirements.txt
+#    If pip reports an externally-managed environment, use:
+#    python3 -m venv --system-site-packages .venv
+#    . .venv/bin/activate
+#    python -m pip install -U pip
+#    python -m pip install -r requirements.txt
+#
+# 5) Resolve remaining ROS package dependencies and build:
+#    rosdep update
+#    rosdep install --from-paths src --ignore-src -r -y
+#    colcon build --symlink-install
+#    source install/setup.bash
+#    If ament reports that an existing path cannot be replaced by a symlink,
+#    clean generated artifacts once and rebuild (these are not source files):
+#    find build install log -depth -delete
+#    (nav2arm additionally requires the external tzb_state_test package; if it
+#    is installed in /home/tzb/nav_ws, source it before launching nav2arm.)
+#    source /home/tzb/nav_ws/install/setup.bash
+#
+# 6) Default launch selections after setup:
+#    robot_model:=tzb_description
+#    camera driver:=orbbec_gemini336l (edit src/pose_estimator/config/camera_switch.yaml)
+#    ros2 launch lite_motion_planner bring_launch.launch.py
+#
+# 7) Camera-only/perception launch examples:
+#    ros2 launch pose_estimator camera_switch.launch.py
+#    ros2 launch pose_estimator perception_bringup.launch.py
+#
+# The checked-in src/openvino/yoloe-11l-seg.bin is only a 134-byte placeholder
+# and cannot be loaded. The default launch now uses src/best_openvino_model,
+# whose XML/BIN pair is complete. Supply model_path:=... to use another export.
