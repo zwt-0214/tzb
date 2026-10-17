@@ -90,3 +90,7 @@ Orbbec 相机
 - `arm2nav`：通过 `/arm2nav`、`/arm2nav/command`、`/arm2nav/from_arm` 交换目标停车、导航建议位置、抓取触发和返航状态。
 - `nav2arm`：旧版接口，通过 `tzb_state_test`、`/tzb_catch/start` 和 `/tzb_catch/result` 协调导航与机械臂。
 - 默认总启动文件中两者均未启用，分别需要设置 `use_arm2nav:=true` 或 `use_nav2arm:=true`。
+
+
+2026.10.10
+新增了视觉给导航二维地图发送终点和yaw值（相对于此时的自身位置，请注意坐标系转换）的能力
