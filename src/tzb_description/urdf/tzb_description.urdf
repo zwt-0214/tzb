@@ -387,8 +387,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-2.8798"
-      upper="2.8798"
+      lower="-3.14159"
+      upper="3.14159"
       effort="3.5"
       velocity="2.0" />
   </joint>
@@ -571,7 +571,7 @@
     name="tcp_joint"
     type="fixed">
     <origin
-      xyz="-0.015 0.001 0.11"
+      xyz="-0.02 -0.001 0.11"
       rpy="0 0 0" />
     <parent
       link="J6_link" />

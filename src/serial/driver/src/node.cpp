@@ -574,11 +574,11 @@ float DriverNode::angleToSerialUnit(float angle_rad, std::size_t joint_index) co
       break;
     case 4:
       // J5: serial = ROS + 3.15340
-      serial_angle_rad = angle_rad - 0.7566F;
+      serial_angle_rad = angle_rad - 0.688806F;
       break;
     case 5:
       // J6: serial = ROS - 1.40514
-      serial_angle_rad = angle_rad - 1.46542F;
+      serial_angle_rad = angle_rad;
       break;
     case 6:
       // J7 calibration retained for a future 7-joint packet.  The current
@@ -612,10 +612,10 @@ float DriverNode::angleFromSerialUnit(float serial_angle, std::size_t joint_inde
       return serial_angle_rad + 2.7583F;
     case 4:
       // Inverse of J5: ROS = serial + 0.7566
-      return serial_angle_rad + 0.7566F;
+      return serial_angle_rad + 0.688806F;
     case 5:
       // Inverse of J6: ROS = serial + 1.40514
-      return serial_angle_rad + 1.46542F;
+      return serial_angle_rad;
     case 6:
       // Inverse of the retained J7 calibration above.
       return serial_angle_rad + 0.19149F;

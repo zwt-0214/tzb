@@ -171,10 +171,10 @@
 
     # Wait for the first navigation goal: 0=keep waiting, 1=run one arm task.
     # A new task requires the status to return to 0 before the next 1.
-    tzb.autostart: false
+    tzb.autostart: true
     # true: wait for /navigation_goal_status 0 -> 1 before starting;
     # false: do not subscribe to the navigation status and start the arm task immediately.
-    tzb.listen_navigation_goal_status: true
+    tzb.listen_navigation_goal_status: false
     tzb.start_topic: "/tzb_catch/start"
     tzb.navigation_goal_status_topic: "/navigation_goal_status"
     tzb.result_topic: "/tzb_catch/result"
