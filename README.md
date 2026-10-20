@@ -100,5 +100,7 @@ Orbbec 相机
 
 
 运行指令：
-     source install/setup.bash 
-     ros2 launch lite_motion_planner bring_launch.launch.py 
+```text
+source install/setup.bash 
+ros2 launch lite_motion_planner bring_launch.launch.py 
+```
